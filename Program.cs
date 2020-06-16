@@ -52,7 +52,7 @@ namespace SearchCatch
                 var list = getCatchs(str);
                 foreach (var item in list)
                 {
-                    if (item.IndexOf("error") < 0 && item.IndexOf("throw") < 0)
+                    if (item.ToLower().IndexOf("error") < 0 && item.ToLower().IndexOf("throw") < 0)
                     {
                         return true;
                     }

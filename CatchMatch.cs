@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace SearchCatch
 {
@@ -49,6 +50,11 @@ namespace SearchCatch
             int bracketsNonFinished = 0;
 
             var index = this.inpuText.IndexOf(key, this.currentIndex);
+            if (index - 1 <= 0 || this.inpuText[index - 1] == '\\')
+            {
+                return cp;
+            }
+
             cp.startIndex = index;
             int lastIndex = 0;
 
