@@ -45,6 +45,10 @@ namespace SearchCatch
 
         static bool isNotError(string filePath)
         {
+            if (filePath.ToLower().IndexOf("test") >= 0)
+            {
+                return false;
+            }
             var fileInfo = new FileInfo(filePath);
             if (fileInfo.Extension.Equals(".java") || fileInfo.Extension.Equals(".cs"))
             {
@@ -52,10 +56,11 @@ namespace SearchCatch
                 var list = getCatchs(str);
                 foreach (var item in list)
                 {
-                    if (item.ToLower().IndexOf("error") < 0 
-                        && item.ToLower().IndexOf("throw") < 0 
-                        && item.ToLower().IndexOf("logs.write")<0
-                        && item.ToLower().IndexOf("filehelper.append") < 0)
+                    if (item.ToLower().IndexOf("error") < 0
+                        && item.ToLower().IndexOf("throw") < 0
+                        && item.ToLower().IndexOf("logs.write") < 0
+                        && item.ToLower().IndexOf("filehelper.append") < 0
+                        && item.ToLower().IndexOf("executeerr") < 0)
                     {
                         return true;
                     }
