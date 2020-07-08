@@ -32,5 +32,22 @@ namespace SearchCatch
         {
             return File.ReadAllText(filepath);
         }
+
+        public static List<string> getDirectoiesFirst(string path)
+        {
+            return System.IO.Directory.GetDirectories(path).ToList();
+        }
+
+        public static List<string> getfileRows(string path)
+        {
+            var list = new List<string>();
+            var sr = new StreamReader(path);
+            while (!sr.EndOfStream)
+            {
+                list.Add(sr.ReadLine());
+            }
+            sr.Close();
+            return list;
+        }
     }
 }
